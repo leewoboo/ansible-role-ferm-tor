@@ -1,0 +1,9 @@
+---
+## Configuration based on https://git-tails.immerda.ch/tails/plain/config/chroot_local-includes/etc/ferm/ferm.conf
+- name: ensure ferm config for blocking all outbound traffic except tor is present
+  sudo: true
+  template: >
+    dest=/etc/ferm/ferm.conf
+    src=etc/ferm/ferm.conf.j2
+    backup=yes
+  notify: restart ferm
